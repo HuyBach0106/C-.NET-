@@ -118,7 +118,6 @@
             cbbCustomerID.Name = "cbbCustomerID";
             cbbCustomerID.Size = new Size(471, 28);
             cbbCustomerID.TabIndex = 4;
-            cbbCustomerID.Click += SearchOrders_Load;
             // 
             // lblShipDate
             // 
@@ -205,6 +204,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmOrders";
             Text = "frmOrders";
+            Load += frmOrders_Load;
             pnlTop.ResumeLayout(false);
             pnlTop.PerformLayout();
             pnlMain.ResumeLayout(false);

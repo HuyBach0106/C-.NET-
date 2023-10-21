@@ -110,7 +110,7 @@ namespace WindowsFormsAppLaiSuat
             }
         }
 
-        private bool UpdateOrder(int orderID)
+        private bool UpdateOrder()
         {
             // 1. ConnectString 2. Command Text 3. Open Connection 4. Execute a command
             try
@@ -126,7 +126,7 @@ namespace WindowsFormsAppLaiSuat
                 myCommand.Parameters.AddWithValue("@OrderDate", this.dtpOrderDate.Value.ToString());
                 myCommand.Parameters.AddWithValue("@ShipDate", this.dtpShipDate.Value.ToString());
                 // Thêm tham số cho điều kiện WHERE (giả sử bạn cần cập nhật dựa trên OrderID)
-                myCommand.Parameters.AddWithValue("@OrderID", orderID); // Thay yourOrderIDValue bằng giá trị OrderID cần cập nhật.
+                myCommand.Parameters.AddWithValue("@OrderID", this.txtOrderID.Text.ToString()); // Thay yourOrderIDValue bằng giá trị OrderID cần cập nhật.
                                                                         // Thực thi câu lệnh
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
@@ -143,22 +143,69 @@ namespace WindowsFormsAppLaiSuat
 
         private void btnSaveOrder_Click(object sender, EventArgs e)
         {
-            if (this.bAddNew == true)
+            //if (this.bAddNew == true)
+            //{
+            //    if (AddNewOrder() == true)
+            //    {
+            //        string strMessage = String.Format("Bạn có muốn thêm nữa không ?");
+            //        DialogResult dr = MessageBox.Show(strMessage, "Xác nhận thêm nữa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //        if (dr == DialogResult.Yes)
+            //        {
+            //            ResetTextControl();
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    if(UpdateOrder())
+            //    {
+            //        MessageBox.Show("Cập nhật thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            int NewID = AddNewOrder_v2();
+            if (NewID > 0)
             {
-                if (AddNewOrder() == true)
+                string strMessage = String.Format("Bạn đã thêm thành công " + NewID.ToString() + "\n Bạn đang thêm nữa không?");
+                DialogResult dr = MessageBox.Show(strMessage, "Xác nhận thêm nữa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
                 {
-                    string strMessage = String.Format("Bạn có muốn thêm nữa không ?");
-                    DialogResult dr = MessageBox.Show(strMessage, "Xác nhận thêm nữa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dr == DialogResult.Yes)
-                    {
-                        ResetTextControl();
-                    }
+                    ResetTextControl();
+                }
+            } else
+            {
+                if (UpdateOrder())
+                {
+                    MessageBox.Show("Cập nhật thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+        }
+
+        private int AddNewOrder_v2()
+        {
+            try
             {
-                int orderId = 1;
-                UpdateOrder(orderId);
+                string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
+                string strCommand = "INSERT INTO Orders (CustomerID, OrderDate, ShipDate) " + "values (@CustomerID, @OrderDate, @ShipDate)";
+                SqlConnection myConnection = new SqlConnection(strConnection);
+                myConnection.Open();
+                // Command Select
+                SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+                // Truyền tham số
+                myCommand.Parameters.AddWithValue("@CustomerID", this.cbbCustomerID.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@OrderDate", this.dtpOrderDate.Value.ToString());
+                myCommand.Parameters.AddWithValue("@ShipDate", this.dtpShipDate.Value.ToString());
+                myCommand.Parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int));
+                myCommand.Parameters["OrderID"].Direction = ParameterDirection.Output;
+                // Thực thi câu lệnh
+                myCommand.ExecuteNonQuery();
+                int ID = int.Parse(myCommand.Parameters["@OrderID"].Value.ToString());
+                myConnection.Close();
+                return ID;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 
@@ -170,11 +217,6 @@ namespace WindowsFormsAppLaiSuat
             {
                 this.Close();
             }
-        }
-
-        private void SearchOrders_Load(object sender, EventArgs e)
-        {
-            LoadCustomer();
         }
 
     }

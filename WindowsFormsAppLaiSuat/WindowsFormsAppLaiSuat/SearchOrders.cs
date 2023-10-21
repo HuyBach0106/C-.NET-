@@ -22,7 +22,7 @@ namespace WindowsFormsAppLaiSuat
 
         private void SearchOrders_Load(object sender, EventArgs e)
         {
-            LoadCustomers();
+            LoadCustomer_v2();
         }
 
         private void LoadCustomers()
@@ -47,32 +47,70 @@ namespace WindowsFormsAppLaiSuat
             this.cbbCustomer.DisplayMember = "FullName";
         }
 
-        private void btnSearchCustomer_Click(object sender, EventArgs e)
+        private void LoadCustomer_v1()
         {
             string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
-            string strQuery = "";
-            if (this.txtFullname.Text.Length > 0)
-            {
-                strQuery = "FullName like N'%" + this.txtFullname.Text + "%'";
-            }
-
-            string strCommand = "SELECT * FROM v_Orders";
-            if (strQuery.Length > 0)
-            {
-                strCommand += " WHERE " + strQuery;
-            }
+            string strCommand = "Select CustomerID, FullName " + "from Customers Union Select 0, 'All'";
             SqlConnection myConnection = new SqlConnection(strConnection);
             SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+            SqlDataAdapter da = new SqlDataAdapter(myCommand);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            this.cbbCustomer.DataSource = dt;
+            this.cbbCustomer.ValueMember = "CustomerID";
+            this.cbbCustomer.DisplayMember = "FullName";
+        }
+
+        private void LoadCustomer_v2()
+        {
+            string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
+            string strCommand = "Select CustomerID, FullName from v_Customer_All";
+            SqlConnection myConnection = new SqlConnection(strConnection);
+            SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+            SqlDataAdapter da = new SqlDataAdapter(myCommand);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            this.cbbCustomer.DataSource = dt;
+            this.cbbCustomer.ValueMember = "CustomerID";
+            this.cbbCustomer.DisplayMember = "FullName";
+        }
+
+        public void btnSearchCustomer_Click(object sender, EventArgs e)
+        {
+            string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
+            //string strQuery = "";
+            //if (this.txtFullname.Text.Length > 0)
+            //{
+            //    strQuery = "FullName like N'%" + this.txtFullname.Text + "%'";
+            //}
+
+            //// Có chọn khách hàng cụ thể
+            //if (this.cbbCustomer.SelectedValue.ToString() != "0")
+            //{
+            //    if(strQuery != "")
+            //    {
+            //        strQuery = " AND CustomerID =" + this.cbbCustomer.SelectedValue.ToString();
+            //    } else
+            //    {
+            //        strQuery = " CustomerID =" + this.cbbCustomer.SelectedValue.ToString();
+            //    }
+            //}
+
+            //string strCommand = "SELECT * FROM v_Orders";
+            //if (strQuery.Length > 0)
+            //{
+            //    strCommand += " WHERE " + strQuery;
+            //}
+            string strCommand = "OrdersList";
+            SqlConnection myConnection = new SqlConnection(strConnection);
+            SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.Parameters.AddWithValue("@CustomerID", this.cbbCustomer.SelectedValue.ToString());
             SqlDataAdapter da = new SqlDataAdapter(myCommand);
             // Fill Data
             DataTable dt = new DataTable();
             da.Fill(dt);
             this.dtgvOrders.DataSource = dt;
-        }
-
-        private void cbbCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void RetrieveCurrentRow(DataGridViewCellEventArgs e)
@@ -109,14 +147,16 @@ namespace WindowsFormsAppLaiSuat
 
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
-            if(selectedOrders != null)
+            if (selectedOrders != null)
             {
                 // Gọi form với trạng thái Edit và truyền vào bản ghi hiện thời
                 frmOrders frm = new frmOrders(false, selectedOrders);
                 // ShowDialog là trạng thái mà form gọi sẽ không tương tác được
+                frm.ShowDialog();
                 // Gọi lại hàm search
-                this.btnSearchCustomer_Click(sender , e);
-            } else
+                this.btnSearchCustomer_Click(sender, e);
+            }
+            else
             {
                 MessageBox.Show("Bạn cần phải chọn bản ghi để sửa !", "Hướng dẫn", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -7,6 +7,9 @@
     <Compile Update="frmListControl.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmOrders.cs">
       <SubType>Form</SubType>
     </Compile>

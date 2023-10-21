@@ -13,7 +13,8 @@ namespace WindowsFormsAppLaiSuat
             ApplicationConfiguration.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SearchOrders());
+            //Application.Run(new SearchOrders());
+            Application.Run(new frmMain());
         }
     }
 }
