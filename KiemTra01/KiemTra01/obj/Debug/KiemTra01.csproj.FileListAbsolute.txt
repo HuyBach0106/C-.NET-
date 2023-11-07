@@ -1,0 +1,12 @@
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\bin\Debug\KiemTra01.exe.config
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\bin\Debug\KiemTra01.exe
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\bin\Debug\KiemTra01.pdb
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.csproj.AssemblyReference.cache
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.frmAddReview.resources
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.frmReview.resources
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.MDIForm.resources
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.Properties.Resources.resources
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.csproj.GenerateResource.cache
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.csproj.CoreCompileInputs.cache
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.exe
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.pdb

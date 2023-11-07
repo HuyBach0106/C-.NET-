@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bi8fcEuYw7eBqrF2budEs1DO5gEQSme4yFL3Cyc+rfg10r9H/MLQ11j2ffDicoMj0ocP/R/tOtdSX7ACRIDbcw==",
+  "dgSpecHash": "HHZSMSLwsXPTtgWIC4ji07lXXvzOV3zXlVA4yBRVIP/eLXhFGeNuNg4oTLWWdWJYwJXCHoY59PRQHo6OVdvAcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
+  "projectFilePath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bach\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Bach\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -492,11 +492,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
+      "projectUniqueName": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
       "projectName": "WindowsFormsAppLaiSuat",
-      "projectPath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
+      "projectPath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat.csproj",
       "packagesPath": "C:\\Users\\Bach\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\obj\\",
+      "outputPath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\WindowsFormsAppLaiSuat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -518,8 +518,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj": {
-              "projectPath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj"
+            "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj": {
+              "projectPath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj"
             }
           }
         }

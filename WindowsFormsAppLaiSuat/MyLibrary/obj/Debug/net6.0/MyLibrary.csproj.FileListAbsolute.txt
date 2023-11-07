@@ -9,3 +9,14 @@ C:\Users\Bach\source\repos\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyL
 C:\Users\Bach\source\repos\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\refint\MyLibrary.dll
 C:\Users\Bach\source\repos\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.pdb
 C:\Users\Bach\source\repos\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\ref\MyLibrary.dll
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\bin\Debug\net6.0\MyLibrary.deps.json
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\bin\Debug\net6.0\MyLibrary.dll
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\bin\Debug\net6.0\MyLibrary.pdb
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.AssemblyInfoInputs.cache
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.AssemblyInfo.cs
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.csproj.CoreCompileInputs.cache
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.dll
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\refint\MyLibrary.dll
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\MyLibrary.pdb
+F:\Github\C-.NET-\WindowsFormsAppLaiSuat\MyLibrary\obj\Debug\net6.0\ref\MyLibrary.dll

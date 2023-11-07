@@ -18,13 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="rptOrders.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptOrders.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Service Include="{c0c07587-41a7-46c8-8fbd-3f9c8ebe2ddc}" />
   </ItemGroup>
 
@@ -34,6 +27,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>rptOrders.rpt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="rptOrders.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptOrders.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

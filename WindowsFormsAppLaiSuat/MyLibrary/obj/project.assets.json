@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj",
+      "projectUniqueName": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj",
       "projectName": "MyLibrary",
-      "projectPath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj",
+      "projectPath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\MyLibrary\\MyLibrary.csproj",
       "packagesPath": "C:\\Users\\Bach\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bach\\source\\repos\\WindowsFormsAppLaiSuat\\MyLibrary\\obj\\",
+      "outputPath": "F:\\Github\\C-.NET-\\WindowsFormsAppLaiSuat\\MyLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
