@@ -30,6 +30,11 @@ namespace KiemTra01
             {
                 MessageBox.Show("Bạn bấm yes");
                 CheckUserNamePassFromDB(strUsername, strPassword);
+                //frmReview frmReview = new frmReview();
+                MDIForm mDIForm = new MDIForm();
+                this.Hide();
+                mDIForm.ShowDialog();
+                this.Show();
             }
             else
             {
@@ -41,12 +46,8 @@ namespace KiemTra01
         {
             try
             {
-                // Dùng để kết nối tới cơ sở dữ liệu
-                // string strConnect = "Data Source=.;Initial Catalog=store;Persist Security Info=True;User ID=sa;Password=123";
-                // Gọi chuỗi kết nối từ file App.Config
                 string strConnect = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
-                // Dùng để chạy câu lệnh
-                string strCommand = String.Format("Select * from Customers " + "where Fullname = N'{0}' " +
+                string strCommand = String.Format("Select * from Customers " + "where EmailAddress = N'{0}' " +
                                                     "and [Password] = N'{1}'", username, password);
                 SqlConnection sqlconnection = new SqlConnection(strConnect);
                 SqlCommand myCommand = new SqlCommand(strCommand, sqlconnection);
@@ -56,6 +57,7 @@ namespace KiemTra01
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     MessageBox.Show("Có dữ liệu");
+                    MessageBox.Show("Đăng nhập thành công");
                     return true;
                 }
                 else
@@ -71,5 +73,4 @@ namespace KiemTra01
             }
         }
     }
-}
 }

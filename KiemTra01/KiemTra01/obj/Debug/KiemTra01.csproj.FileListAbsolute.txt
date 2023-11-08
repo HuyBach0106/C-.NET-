@@ -10,3 +10,4 @@ C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.csproj.Genera
 C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.csproj.CoreCompileInputs.cache
 C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.exe
 C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.pdb
+C:\Users\Bach\source\repos\KiemTra01\KiemTra01\obj\Debug\KiemTra01.Login.resources

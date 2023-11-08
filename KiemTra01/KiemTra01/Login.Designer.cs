@@ -43,6 +43,7 @@
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txtEmail
             // 
@@ -50,6 +51,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(307, 20);
             this.txtEmail.TabIndex = 1;
+            this.txtEmail.Text = "jb@ibuyspy.com";
             // 
             // txtPassword
             // 
@@ -57,6 +59,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(307, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Text = "IBS_007";
             // 
             // lblEmail
             // 

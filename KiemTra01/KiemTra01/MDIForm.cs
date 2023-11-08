@@ -110,5 +110,15 @@ namespace KiemTra01
                 childForm.Close();
             }
         }
+
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Login frmLogin = new Login();
+        }
+
+        private void reviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReview form = new frmReview();
+        }
     }
 }

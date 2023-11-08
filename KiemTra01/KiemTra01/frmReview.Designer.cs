@@ -32,7 +32,7 @@
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.btnSearchProduct = new System.Windows.Forms.Button();
+            this.btnSearchReview = new System.Windows.Forms.Button();
             this.dtgvReview = new System.Windows.Forms.DataGridView();
             this.btnAddReview = new System.Windows.Forms.Button();
             this.btnEditReview = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             // lblProductID
             // 
             this.lblProductID.AutoSize = true;
-            this.lblProductID.Location = new System.Drawing.Point(12, 61);
+            this.lblProductID.Location = new System.Drawing.Point(22, 21);
             this.lblProductID.Name = "lblProductID";
             this.lblProductID.Size = new System.Drawing.Size(58, 13);
             this.lblProductID.TabIndex = 0;
@@ -51,15 +51,14 @@
             // 
             // txtProductID
             // 
-            this.txtProductID.Location = new System.Drawing.Point(76, 58);
+            this.txtProductID.Location = new System.Drawing.Point(86, 18);
             this.txtProductID.Name = "txtProductID";
             this.txtProductID.Size = new System.Drawing.Size(162, 20);
             this.txtProductID.TabIndex = 1;
-            this.txtProductID.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtSearchProduct
             // 
-            this.txtSearchProduct.Location = new System.Drawing.Point(361, 56);
+            this.txtSearchProduct.Location = new System.Drawing.Point(347, 18);
             this.txtSearchProduct.Name = "txtSearchProduct";
             this.txtSearchProduct.Size = new System.Drawing.Size(188, 20);
             this.txtSearchProduct.TabIndex = 2;
@@ -67,36 +66,35 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(290, 59);
+            this.lblSearch.Location = new System.Drawing.Point(267, 21);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(65, 13);
             this.lblSearch.TabIndex = 3;
             this.lblSearch.Text = "Search Text";
-            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
             // 
-            // btnSearchProduct
+            // btnSearchReview
             // 
-            this.btnSearchProduct.Location = new System.Drawing.Point(585, 58);
-            this.btnSearchProduct.Name = "btnSearchProduct";
-            this.btnSearchProduct.Size = new System.Drawing.Size(117, 23);
-            this.btnSearchProduct.TabIndex = 4;
-            this.btnSearchProduct.Text = "Search";
-            this.btnSearchProduct.UseVisualStyleBackColor = true;
-            this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
+            this.btnSearchReview.Location = new System.Drawing.Point(541, 18);
+            this.btnSearchReview.Name = "btnSearchReview";
+            this.btnSearchReview.Size = new System.Drawing.Size(117, 23);
+            this.btnSearchReview.TabIndex = 4;
+            this.btnSearchReview.Text = "Search";
+            this.btnSearchReview.UseVisualStyleBackColor = true;
+            this.btnSearchReview.Click += new System.EventHandler(this.btnSearchReview_Click);
             // 
             // dtgvReview
             // 
             this.dtgvReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvReview.Location = new System.Drawing.Point(12, 84);
+            this.dtgvReview.Location = new System.Drawing.Point(25, 47);
             this.dtgvReview.Name = "dtgvReview";
-            this.dtgvReview.Size = new System.Drawing.Size(622, 285);
+            this.dtgvReview.Size = new System.Drawing.Size(633, 285);
             this.dtgvReview.TabIndex = 5;
             this.dtgvReview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvReview_CellContentClick);
             this.dtgvReview.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvReview_RowEnter);
             // 
             // btnAddReview
             // 
-            this.btnAddReview.Location = new System.Drawing.Point(61, 395);
+            this.btnAddReview.Location = new System.Drawing.Point(25, 353);
             this.btnAddReview.Name = "btnAddReview";
             this.btnAddReview.Size = new System.Drawing.Size(100, 23);
             this.btnAddReview.TabIndex = 6;
@@ -106,32 +104,34 @@
             // 
             // btnEditReview
             // 
-            this.btnEditReview.Location = new System.Drawing.Point(185, 395);
+            this.btnEditReview.Location = new System.Drawing.Point(152, 353);
             this.btnEditReview.Name = "btnEditReview";
             this.btnEditReview.Size = new System.Drawing.Size(106, 23);
             this.btnEditReview.TabIndex = 7;
             this.btnEditReview.Text = "Sửa";
             this.btnEditReview.UseVisualStyleBackColor = true;
+            this.btnEditReview.Click += new System.EventHandler(this.btnEditReview_Click);
             // 
             // btnDeleteReview
             // 
-            this.btnDeleteReview.Location = new System.Drawing.Point(322, 395);
+            this.btnDeleteReview.Location = new System.Drawing.Point(295, 353);
             this.btnDeleteReview.Name = "btnDeleteReview";
             this.btnDeleteReview.Size = new System.Drawing.Size(100, 23);
             this.btnDeleteReview.TabIndex = 8;
             this.btnDeleteReview.Text = "Xóa";
             this.btnDeleteReview.UseVisualStyleBackColor = true;
+            this.btnDeleteReview.Click += new System.EventHandler(this.btnDeleteReview_Click);
             // 
             // frmReview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(669, 385);
             this.Controls.Add(this.btnDeleteReview);
             this.Controls.Add(this.btnEditReview);
             this.Controls.Add(this.btnAddReview);
             this.Controls.Add(this.dtgvReview);
-            this.Controls.Add(this.btnSearchProduct);
+            this.Controls.Add(this.btnSearchReview);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.txtSearchProduct);
             this.Controls.Add(this.txtProductID);
@@ -150,7 +150,7 @@
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.TextBox txtSearchProduct;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.Button btnSearchProduct;
+        private System.Windows.Forms.Button btnSearchReview;
         private System.Windows.Forms.DataGridView dtgvReview;
         private System.Windows.Forms.Button btnAddReview;
         private System.Windows.Forms.Button btnEditReview;

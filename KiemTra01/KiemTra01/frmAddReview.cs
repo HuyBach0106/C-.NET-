@@ -8,11 +8,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KiemTra01.Class;
 
 namespace KiemTra01
 {
     public partial class frmAddReview : Form
     {
+        Review currentReviews;
+        bool bAddNew = false;
+
+        public frmAddReview(bool status, Review objReview)
+        {
+            InitializeComponent();
+            this.bAddNew = status;
+            currentReviews = new Review();
+            currentReviews.ProductID = objReview.ProductID;
+            currentReviews.CustomerName = objReview.CustomerName;   
+            currentReviews.CustomerEmail = objReview.CustomerEmail;
+            currentReviews.Rating = objReview.Rating;
+            currentReviews.Comments = objReview.Comments;   
+        }
+
+        public frmAddReview(bool status)
+        {
+            InitializeComponent();
+            this.bAddNew = status;
+        }
+
         public frmAddReview()
         {
             InitializeComponent();
@@ -22,6 +44,41 @@ namespace KiemTra01
         {
 
         }
+
+        private void LoadCustomer()
+        {
+            string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
+            string strCommand = "SELECT CustomerEmail, CustomerName from Customers";
+            SqlConnection myConnection = new SqlConnection(strConnection);
+            SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+            SqlDataAdapter da = new SqlDataAdapter(myCommand);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Chèn dữ liệu vào combobox
+            this.cbbCustomerName.DataSource = dt;
+            this.cbbCustomerName.ValueMember = "CustomerName";
+            this.cbbCustomerName.DisplayMember = "CustomerName";
+            this.cbbCustomerEmail.DataSource = dt;
+            this.cbbCustomerEmail.ValueMember = "CustomerEmail";
+            this.cbbCustomerEmail.DisplayMember = "CustomerEmail";
+        }
+
+        private void LoadProduct()
+        {
+            string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
+            string strCommand = "SELECT ProductID, ModelName from Products";
+            SqlConnection myConnection = new SqlConnection(strConnection);
+            SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
+            SqlDataAdapter da = new SqlDataAdapter(myCommand);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            // Chèn dữ liệu vào combobox
+            this.cbbProductID.DataSource = dt;
+            this.cbbProductID.ValueMember = "ProductID";
+            this.cbbProductID.DisplayMember = "ModelName";
+        }
+
+
 
         private int AddNewReview()
         {
@@ -35,12 +92,12 @@ namespace KiemTra01
                 // Command Select
                 SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
                 // Truyền tham số
-                myCommand.Parameters.AddWithValue("@ProductID", this.txtProductID.ToString());
-                myCommand.Parameters.AddWithValue("@CustomerName", this.txtCustomerName.ToString());
-                myCommand.Parameters.AddWithValue("@CustomerEmail", this.txtCustomerEmail.ToString());
-                myCommand.Parameters.AddWithValue("@Rating", this.txtRating.ToString());
-                myCommand.Parameters.AddWithValue("@Comments", this.txtComment.ToString());
-                myCommand.Parameters["OrderID"].Direction = ParameterDirection.Output;
+                myCommand.Parameters.AddWithValue("@ProductID", this.cbbProductID.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@CustomerName", this.cbbCustomerName.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@CustomerEmail", this.cbbCustomerEmail.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@Rating", this.txtRating.Text.ToString());
+                myCommand.Parameters.AddWithValue("@Comments", this.txtComment.Text.ToString());
+                myCommand.Parameters["ReviewID"].Direction = ParameterDirection.Output;
                 // Thực thi câu lệnh
                 myCommand.ExecuteNonQuery();
                 int ID = int.Parse(myCommand.Parameters["@ReviewID"].Value.ToString());
@@ -66,12 +123,12 @@ namespace KiemTra01
                 // Command Update
                 SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
                 // Truyền tham số
-                myCommand.Parameters.AddWithValue("@ProductID", this.txtProductID.ToString());
-                myCommand.Parameters.AddWithValue("@CustomerName", this.txtCustomerName.ToString());
-                myCommand.Parameters.AddWithValue("@CustomerEmail", this.txtCustomerEmail.ToString());
-                myCommand.Parameters.AddWithValue("@Rating", this.txtRating.ToString());
-                myCommand.Parameters.AddWithValue("@Comments", this.txtComment.ToString());
-                myCommand.Parameters.AddWithValue("@OrderID", this.cbbReview.Text.ToString()); 
+                myCommand.Parameters.AddWithValue("@ProductID", this.cbbProductID.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@CustomerName", this.cbbCustomerName.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@CustomerEmail", this.cbbCustomerEmail.SelectedValue.ToString());
+                myCommand.Parameters.AddWithValue("@Rating", this.txtRating.Text.ToString());
+                myCommand.Parameters.AddWithValue("@Comments", this.txtComment.Text.ToString());
+                myCommand.Parameters.AddWithValue("@ReviewID", this.txtReviewID.Text.ToString()); 
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
                 return true;
@@ -111,6 +168,29 @@ namespace KiemTra01
             if (dr == DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void frmAddReview_Load(object sender, EventArgs e)
+        {
+            LoadCustomer();
+            LoadProduct();
+            // ID Review là tự tăng
+            this.txtReviewID.Enabled = false;
+            // Hiện tên Title theo trạng thái Add New/Edit
+            if (this.bAddNew)
+            {
+                this.lblTitleReview.Text = "Add new Review";
+            }
+            else
+            {
+                this.lblTitleReview.Text = "Edit Review";
+                this.cbbCustomerName.SelectedValue = this.currentReviews.CustomerID;
+                this.cbbProductID.SelectedValue = this.currentReviews.ProductID;
+                this.txtReviewID.SelectedText = this.currentReviews.ReviewID.ToString();
+                this.txtRating.Text = this.currentReviews.Rating.ToString();
+                this.txtComment.Text = this.currentReviews.Comments.ToString();
+                // Load Reviews
             }
         }
     }
