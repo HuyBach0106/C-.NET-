@@ -11,9 +11,6 @@ namespace KiemTra01.Class
         public int ReviewID { get; set; }
         public int ProductID { get; set; }
         public string CustomerName { get; set; }
-
-        public String CustomerID { get; set; }  
-
         public string CustomerEmail { get; set; }
         public int Rating { get; set; }
         public string Comments { get; set; }

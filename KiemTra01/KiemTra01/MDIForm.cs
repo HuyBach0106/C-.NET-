@@ -113,12 +113,29 @@ namespace KiemTra01
 
         private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Login frmLogin = new Login();
+            Login form = new Login();
+            // Đặt form con là child của form MDI
+            form.MdiParent = this;
+            // Hiển thị form con
+            form.Show();
         }
 
         private void reviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmReview form = new frmReview();
+            // Đặt form con là child của form MDI
+            form.MdiParent = this;
+            // Hiển thị form con
+            form.Show();
+        }
+
+        private void formReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmReport form = new FrmReport();
+            // Đặt form con là child của form MDI
+            form.MdiParent = this;
+            // Hiển thị form con
+            form.Show();
         }
     }
 }

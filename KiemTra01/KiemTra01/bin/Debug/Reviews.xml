@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <MyReview>
+    <ReviewID>21</ReviewID>
+    <ProductID>404</ProductID>
+    <CustomerName>Sarah Goodpenny</CustomerName>
+    <CustomerEmail>sg@ibuyspy.com</CustomerEmail>
+    <Rating>5</Rating>
+    <Comments>Really smashing! &amp;nbsp;Don't know how I'd get by without them!</Comments>
+    <Expr1>21</Expr1>
+    <Expr2>404</Expr2>
+    <Expr3>Sarah Goodpenny</Expr3>
+    <Expr4>sg@ibuyspy.com</Expr4>
+    <Expr5>5</Expr5>
+    <Expr6>Really smashing! &amp;nbsp;Don't know how I'd get by without them!</Expr6>
+  </MyReview>
+  <MyReview>
+    <ReviewID>22</ReviewID>
+    <ProductID>378</ProductID>
+    <CustomerName>James Bondwell</CustomerName>
+    <CustomerEmail>jb@ibuyspy.com</CustomerEmail>
+    <Rating>3</Rating>
+    <Comments>Well made, but only moderately effective. &amp;nbsp;Ouch!</Comments>
+    <Expr1>22</Expr1>
+    <Expr2>378</Expr2>
+    <Expr3>James Bondwell</Expr3>
+    <Expr4>jb@ibuyspy.com</Expr4>
+    <Expr5>3</Expr5>
+    <Expr6>Well made, but only moderately effective. &amp;nbsp;Ouch!</Expr6>
+  </MyReview>
+</NewDataSet>

@@ -22,24 +22,17 @@ namespace KiemTra01
         {
             string strUsername = this.txtEmail.Text;
             string strPassword = this.txtPassword.Text;
-            string strMessage = String.Format("Bạn đã nhập email {0}, " +
-                "password {1}", strUsername, strPassword);
-            DialogResult dr = MessageBox.Show(strMessage + "\n Bạn có muốn kiểm tra trong CSDL không?", "Thông Báo",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dr == DialogResult.Yes)
-            {
-                MessageBox.Show("Bạn bấm yes");
-                CheckUserNamePassFromDB(strUsername, strPassword);
-                //frmReview frmReview = new frmReview();
+            if (CheckUserNamePassFromDB(strUsername, strPassword)) { 
                 MDIForm mDIForm = new MDIForm();
+                mDIForm.Text = strUsername + " - " + strPassword;
                 this.Hide();
                 mDIForm.ShowDialog();
                 this.Show();
-            }
-            else
+            } else
             {
-                MessageBox.Show("Bạn bấm NO");
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
             }
+
         }
 
         private bool CheckUserNamePassFromDB(string username, string password)
@@ -56,7 +49,6 @@ namespace KiemTra01
                 da.Fill(ds, "ABC");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Có dữ liệu");
                     MessageBox.Show("Đăng nhập thành công");
                     return true;
                 }

@@ -22,11 +22,14 @@ namespace KiemTra01
             InitializeComponent();
             this.bAddNew = status;
             currentReviews = new Review();
+            currentReviews.ReviewID = objReview.ReviewID;
             currentReviews.ProductID = objReview.ProductID;
             currentReviews.CustomerName = objReview.CustomerName;   
             currentReviews.CustomerEmail = objReview.CustomerEmail;
             currentReviews.Rating = objReview.Rating;
-            currentReviews.Comments = objReview.Comments;   
+            currentReviews.Comments = objReview.Comments;
+            LoadCustomer();
+            LoadProduct();
         }
 
         public frmAddReview(bool status)
@@ -48,7 +51,7 @@ namespace KiemTra01
         private void LoadCustomer()
         {
             string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
-            string strCommand = "SELECT CustomerEmail, CustomerName from Customers";
+            string strCommand = "SELECT EmailAddress, FullName from Customers";
             SqlConnection myConnection = new SqlConnection(strConnection);
             SqlCommand myCommand = new SqlCommand(strCommand, myConnection);
             SqlDataAdapter da = new SqlDataAdapter(myCommand);
@@ -56,11 +59,11 @@ namespace KiemTra01
             da.Fill(dt);
             // Chèn dữ liệu vào combobox
             this.cbbCustomerName.DataSource = dt;
-            this.cbbCustomerName.ValueMember = "CustomerName";
-            this.cbbCustomerName.DisplayMember = "CustomerName";
+            this.cbbCustomerName.ValueMember = "FullName";
+            this.cbbCustomerName.DisplayMember = "FullName";
             this.cbbCustomerEmail.DataSource = dt;
-            this.cbbCustomerEmail.ValueMember = "CustomerEmail";
-            this.cbbCustomerEmail.DisplayMember = "CustomerEmail";
+            this.cbbCustomerEmail.ValueMember = "EmailAddress";
+            this.cbbCustomerEmail.DisplayMember = "EmailAddress";
         }
 
         private void LoadProduct()
@@ -97,9 +100,12 @@ namespace KiemTra01
                 myCommand.Parameters.AddWithValue("@CustomerEmail", this.cbbCustomerEmail.SelectedValue.ToString());
                 myCommand.Parameters.AddWithValue("@Rating", this.txtRating.Text.ToString());
                 myCommand.Parameters.AddWithValue("@Comments", this.txtComment.Text.ToString());
-                myCommand.Parameters["ReviewID"].Direction = ParameterDirection.Output;
+                // Thêm tham số đầu ra
+                myCommand.Parameters.Add(new SqlParameter("@ReviewID", SqlDbType.Int));
+                myCommand.Parameters["@ReviewID"].Direction = ParameterDirection.Output;
                 // Thực thi câu lệnh
                 myCommand.ExecuteNonQuery();
+                // Lấy ra ID mới nhất của bản ghi vừa được thêm vào
                 int ID = int.Parse(myCommand.Parameters["@ReviewID"].Value.ToString());
                 myConnection.Close();
                 return ID;
@@ -117,7 +123,8 @@ namespace KiemTra01
             try
             {
                 string strConnection = System.Configuration.ConfigurationSettings.AppSettings["MyCNN"].ToString();
-                string strCommand = "UPDATE Reviews SET ProductID = @ProductID, CustomerName = @CustomerName, CustomerEmail = @CustomerEmail, Rating = @Rating, Comments = @Comments WHERE ReviewID = @ReviewID";
+                string strCommand = "UPDATE Reviews SET ProductID = @ProductID, CustomerName = @CustomerName, CustomerEmail = @CustomerEmail, " +
+                    "Rating = @Rating, Comments = @Comments" + " WHERE ReviewID = @ReviewID";
                 SqlConnection myConnection = new SqlConnection(strConnection);
                 myConnection.Open();
                 // Command Update
@@ -129,6 +136,7 @@ namespace KiemTra01
                 myCommand.Parameters.AddWithValue("@Rating", this.txtRating.Text.ToString());
                 myCommand.Parameters.AddWithValue("@Comments", this.txtComment.Text.ToString());
                 myCommand.Parameters.AddWithValue("@ReviewID", this.txtReviewID.Text.ToString()); 
+                // Thực thi câu lệnh
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
                 return true;
@@ -185,9 +193,9 @@ namespace KiemTra01
             else
             {
                 this.lblTitleReview.Text = "Edit Review";
-                this.cbbCustomerName.SelectedValue = this.currentReviews.CustomerID;
-                this.cbbProductID.SelectedValue = this.currentReviews.ProductID;
                 this.txtReviewID.SelectedText = this.currentReviews.ReviewID.ToString();
+                this.cbbCustomerName.SelectedValue = this.currentReviews.CustomerName;
+                this.cbbProductID.SelectedValue = this.currentReviews.ProductID;
                 this.txtRating.Text = this.currentReviews.Rating.ToString();
                 this.txtComment.Text = this.currentReviews.Comments.ToString();
                 // Load Reviews

@@ -101,23 +101,23 @@
             // 
             // txtRating
             // 
-            this.txtRating.Location = new System.Drawing.Point(112, 218);
+            this.txtRating.Location = new System.Drawing.Point(124, 218);
             this.txtRating.Name = "txtRating";
             this.txtRating.Size = new System.Drawing.Size(276, 20);
             this.txtRating.TabIndex = 11;
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(105, 253);
+            this.txtComment.Location = new System.Drawing.Point(124, 253);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(283, 20);
+            this.txtComment.Size = new System.Drawing.Size(276, 20);
             this.txtComment.TabIndex = 12;
             // 
             // btnSaveReview
             // 
-            this.btnSaveReview.Location = new System.Drawing.Point(155, 288);
+            this.btnSaveReview.Location = new System.Drawing.Point(124, 288);
             this.btnSaveReview.Name = "btnSaveReview";
-            this.btnSaveReview.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveReview.Size = new System.Drawing.Size(102, 23);
             this.btnSaveReview.TabIndex = 13;
             this.btnSaveReview.Text = "Save";
             this.btnSaveReview.UseVisualStyleBackColor = true;
@@ -125,9 +125,9 @@
             // 
             // btnCloseReview
             // 
-            this.btnCloseReview.Location = new System.Drawing.Point(313, 288);
+            this.btnCloseReview.Location = new System.Drawing.Point(298, 288);
             this.btnCloseReview.Name = "btnCloseReview";
-            this.btnCloseReview.Size = new System.Drawing.Size(75, 23);
+            this.btnCloseReview.Size = new System.Drawing.Size(102, 23);
             this.btnCloseReview.TabIndex = 14;
             this.btnCloseReview.Text = "Close";
             this.btnCloseReview.UseVisualStyleBackColor = true;
@@ -136,24 +136,24 @@
             // cbbProductID
             // 
             this.cbbProductID.FormattingEnabled = true;
-            this.cbbProductID.Location = new System.Drawing.Point(105, 122);
+            this.cbbProductID.Location = new System.Drawing.Point(124, 122);
             this.cbbProductID.Name = "cbbProductID";
-            this.cbbProductID.Size = new System.Drawing.Size(283, 21);
+            this.cbbProductID.Size = new System.Drawing.Size(276, 21);
             this.cbbProductID.TabIndex = 15;
             // 
             // cbbCustomerName
             // 
             this.cbbCustomerName.FormattingEnabled = true;
-            this.cbbCustomerName.Location = new System.Drawing.Point(112, 156);
+            this.cbbCustomerName.Location = new System.Drawing.Point(124, 151);
             this.cbbCustomerName.Name = "cbbCustomerName";
             this.cbbCustomerName.Size = new System.Drawing.Size(276, 21);
             this.cbbCustomerName.TabIndex = 16;
             // 
             // txtReviewID
             // 
-            this.txtReviewID.Location = new System.Drawing.Point(105, 91);
+            this.txtReviewID.Location = new System.Drawing.Point(124, 91);
             this.txtReviewID.Name = "txtReviewID";
-            this.txtReviewID.Size = new System.Drawing.Size(283, 20);
+            this.txtReviewID.Size = new System.Drawing.Size(276, 20);
             this.txtReviewID.TabIndex = 17;
             // 
             // lblCustomerEmail
@@ -168,7 +168,7 @@
             // cbbCustomerEmail
             // 
             this.cbbCustomerEmail.FormattingEnabled = true;
-            this.cbbCustomerEmail.Location = new System.Drawing.Point(112, 188);
+            this.cbbCustomerEmail.Location = new System.Drawing.Point(124, 188);
             this.cbbCustomerEmail.Name = "cbbCustomerEmail";
             this.cbbCustomerEmail.Size = new System.Drawing.Size(276, 21);
             this.cbbCustomerEmail.TabIndex = 19;

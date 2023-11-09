@@ -56,22 +56,55 @@ namespace KiemTra01
 
         private void GridView(DataGridViewCellEventArgs e)
         {
-            DataGridViewRow dr = this.dtgvReview.Rows[e.RowIndex];
-            this.Text = dr.Cells["ReviewID"].Value.ToString();
-            // Lưu dòng hiện thời vào 1 đối tượng của lớp Review
-            selectedReview = new Review();
-            selectedReview.ReviewID = int.Parse(dr.Cells["ReviewID"].Value.ToString());
-            selectedReview.ProductID = int.Parse(dr.Cells["ProductID"].Value.ToString());
-            selectedReview.CustomerName = dr.Cells["CustomerName"].Value.ToString();
-            selectedReview.CustomerEmail = dr.Cells["CustomerEmail"].Value.ToString();
-            selectedReview.Rating = int.Parse(dr.Cells["Rating"].Value.ToString());
-            selectedReview.Comments = dr.Cells["Comments"].Value.ToString();
+            //DataGridViewRow dr = this.dtgvReview.Rows[e.RowIndex];
+            //this.Text = dr.Cells["ReviewID"].Value.ToString();
+            //selectedReview = new Review();
+            //selectedReview.ReviewID = int.Parse(dr.Cells["ReviewID"].Value.ToString());
+            //selectedReview.ProductID = int.Parse(dr.Cells["ProductID"].Value.ToString());
+            //selectedReview.CustomerName = dr.Cells["CustomerName"].Value.ToString();
+            //selectedReview.CustomerEmail = dr.Cells["CustomerEmail"].Value.ToString();
+            //selectedReview.Rating = int.Parse(dr.Cells["Rating"].Value.ToString());
+            //selectedReview.Comments = dr.Cells["Comments"].Value.ToString();
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow dr = this.dtgvReview.Rows[e.RowIndex];
+                // Cập nhật tiêu đề
+                this.Text = "Review Details - " + dr.Cells["ReviewID"].Value.ToString() + dr.Cells["CustomerName"].Value.ToString()
+                + dr.Cells["CustomerEmail"].Value.ToString() + dr.Cells["Rating"].Value.ToString();
+
+                // Lưu dòng hiện thời vào đối tượng selectedReview
+                selectedReview = new Review();
+                selectedReview.ReviewID = 0;
+                if (dr.Cells["ReviewID"].Value != null)
+                {
+                    int reviewID;
+                    if (int.TryParse(dr.Cells["ReviewID"].Value.ToString(), out reviewID))
+                    {
+                        selectedReview.ReviewID = reviewID;
+                    }
+                }
+
+                // Tương tự, cập nhật các thông tin khác
+                selectedReview.ProductID = 0;
+                if (dr.Cells["ProductID"].Value != null)
+                {
+                    int productID;
+                    if (int.TryParse(dr.Cells["ProductID"].Value.ToString(), out productID))
+                    {
+                        //selectedReview.ProductID = productID;
+                        txtProductID.Text = productID.ToString();
+                    }
+                }
+
+                // Cập nhật các ô text trên form
+                txtSearchProduct.Text = dr.Cells["CustomerName"].Value.ToString();
+            }
         }
 
         private void dtgvReview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             GridView(e);
-
         }
 
         private void dtgvReview_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -145,5 +178,10 @@ namespace KiemTra01
                 }
             }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmReport frmReport = new FrmReport();
+            frmReport.ShowDialog();
         }
+    }
 }
